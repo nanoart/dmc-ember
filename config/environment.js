@@ -6,6 +6,12 @@ module.exports = function(environment) {
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
+    firebase: {
+        apiKey: 'nanoart',
+        authDomain: 'dualshield-b025d.firebaseapp.com',
+        databaseURL: 'https://dualshield-b025d.firebaseio.com',
+        storageBucket: 'dualshield-b025d.appspot.com',
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
