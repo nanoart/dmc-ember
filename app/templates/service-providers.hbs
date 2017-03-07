@@ -1,4 +1,12 @@
-<div>we use light table to show sp list, does it support double click?
+<h1>Service Providers</h1>
+
+<div class="well">
+  <ul class="nav nav-pills">
+    {{#link-to 'service-providers.index' tagName="li"}}<a href="">List all</a>{{/link-to}}
+    {{#link-to 'service-providers.new' tagName="li"}}<a href="">Add new</a>{{/link-to}}
+  </ul>
 </div>
+
+<div>we use light table to show sp list</div>
 
 {{outlet}}
