@@ -9,20 +9,25 @@ export default Ember.Route.extend({
   actions: {
 
     saveServiceProvider(newSP) {
-      var newAssertAttr = this.store.createRecord({
+      var assertionAttribute = this.store.createRecord('assertion-attribute', {
         name: 'lastLogin',
         mapTo: 'lastLogin',
         mapType: 1,
         location:'BODY',
         checkRequest:true
       });
-      newSP.get('assertionAttributes').then(function(assertionAttributes) {
-        assertionAttributes.addOject(newAssertAttr);
+      /*
+      Ember.RSVP.Promise.cast(newSP.get('assertionAttributes')).then(function(assertionAttributes) {
+        assertionAttributes.pushOject(assertionAttribute);
 
         newSP.save().then(() => this.transitionTo('service-providers'));
       });
+*/
+    newSP.get('assertionAttributes').pushOject(assertionAttribute);
 
-      
+      newSP.save().then(() => this.transitionTo('service-providers'));
+
+
     },
 
     willTransition() {
