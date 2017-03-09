@@ -16,16 +16,29 @@ export default Ember.Route.extend({
         location:'BODY',
         checkRequest:true
       });
+
+      var self = this;
+      assertionAttribute.save();
+      Ember.RSVP.all([assertionAttribute.save(), newSP.get('assertionAttributes')]).then(function(promises) {
+        var attrs = promises[1];
+        attrs.pushObject(assertionAttribute);
+        newSP.save().then(() => self.transitionTo('service-providers')); 
+      });
+
+
       /*
       Ember.RSVP.Promise.cast(newSP.get('assertionAttributes')).then(function(assertionAttributes) {
         assertionAttributes.pushOject(assertionAttribute);
 
         newSP.save().then(() => this.transitionTo('service-providers'));
       });
-*/
-    newSP.get('assertionAttributes').pushOject(assertionAttribute);
 
-      newSP.save().then(() => this.transitionTo('service-providers'));
+    newSP.get('assertionAttributes').addOject(assertionAttribute);
+    assertionAttribute.save().then(function(){
+      newSP.save().then(() => this.transitionTo('service-providers'));       
+    });
+*/
+      
 
 
     },

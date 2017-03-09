@@ -5,5 +5,5 @@ export default DS.Model.extend({
   description: DS.attr('string'),
   type: DS.attr('string'),
   ssoserver: DS.attr('string'),
-  assertionAttributes: DS.hasMany('assertion-attribute', { async: false, inverse: null })
+  assertionAttributes: DS.hasMany('assertion-attribute', { async: true, inverse: null })
 });
