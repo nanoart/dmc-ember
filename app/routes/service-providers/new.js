@@ -9,7 +9,20 @@ export default Ember.Route.extend({
   actions: {
 
     saveServiceProvider(newSP) {
-      newSP.save().then(() => this.transitionTo('service-providers'));
+      var newAssertAttr = this.store.createRecord({
+        name: 'lastLogin',
+        mapTo: 'lastLogin',
+        mapType: 1,
+        location:'BODY',
+        checkRequest:true
+      });
+      newSP.get('assertionAttributes').then(function(assertionAttributes) {
+        assertionAttributes.addOject(newAssertAttr);
+
+        newSP.save().then(() => this.transitionTo('service-providers'));
+      });
+
+      
     },
 
     willTransition() {
