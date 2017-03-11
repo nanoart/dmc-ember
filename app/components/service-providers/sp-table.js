@@ -12,17 +12,21 @@ export default Ember.Component.extend(TableCommon, {
       valuePath: 'name',
       width: '60px',
       sortable: false,
+      resizable: true,
       draggable: true
     }, {
       label: 'Description',
       valuePath: 'description',
-      width: '150px'
+      width: '150px',
+      resizable: true,
     }, {
       label: 'Typee',
       valuePath: 'type',
+      resizable: true,
       width: '150px'
     }, {
       label: 'SSO Server',
+      resizable: true,
       valuePath: 'ssoserver'
     }];
   })
