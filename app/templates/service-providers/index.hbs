@@ -1,14 +1,2 @@
-<h2>List</h2>
+{{service-providers/sp-table model=model}}
 
-{{#each model as |sp|}}
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">{{sp.name}}</h3>
-    </div>
-    <div class="panel-body">
-      <p>type: {{sp.type}}</p>
-	  <p>SSO Server: {{sp.ssoserver}}</p>
-      <p>Description: {{sp.description}}</p>
-    </div>
-  </div>
-{{/each}}
