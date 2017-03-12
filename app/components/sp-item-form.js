@@ -25,11 +25,17 @@ export default Ember.Component.extend({
     table: computed('columns', function() {
         return new Table(this.get('columns'));
     }),
+    row: {},
 
 
     actions:{
-        addAttribute(param) {
-            this.sendAction('addAttribute', param);
-            }        
+        addAttribute(row) {
+            var clonedObj = Ember.copy(row, true);
+            this.get('table').addRow(clonedObj);
+//            this.sendAction('addAttribute', param);
+        },
+        deleteRows() {
+            this.get('table').removeRows(this.get('table.selectedRows'));
+        }        
     }
 });
