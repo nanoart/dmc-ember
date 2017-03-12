@@ -26,6 +26,7 @@
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-file">
                     </span>Attributes</a>
+<button type="submit" class="btn btn-default" {{action 'addAttribute' attrName}} >Add Attr</button>                    
                 </h4>
             </div>
             <div id="collapseOne" class="panel-collapse collapse in">
@@ -33,8 +34,21 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Title" required />
+                                {{input type="text" value=attrName  size="50" placeholder="Attribute Name"}}
                             </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Map To" required />
+                            </div>                            
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Map Types" required />
+                            </div>                            
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Location" required />
+                            </div>                            
+                            <div class="form-group">
+                                {{input type="checkbox" name="isAdmin" checked=isAdmin}}
+                                
+                            </div>                            
                             <div class="form-group">
                                 <textarea class="form-control" placeholder="Content" rows="5" required></textarea>
                             </div>
@@ -43,6 +57,36 @@
                 </div>
             </div>
         </div>
+
+
+        {{#light-table table as |t|}}
+
+        {{t.head}}
+
+        {{#t.body as |body|}}
+            {{#body.expanded-row as |row|}}
+            Hello <b>{{row.name}}</b>
+            {{/body.expanded-row}}
+
+            {{#if isLoading}}
+            {{#body.loader}}
+                Loading...
+            {{/body.loader}}
+            {{/if}}
+
+            {{#if table.isEmpty}}
+            {{#body.no-data}}
+                No users found.
+            {{/body.no-data}}
+            {{/if}}
+        {{/t.body}}
+
+        {{t.foot}}
+
+        {{/light-table}}
+
+
+
     </div>
 
   <!--

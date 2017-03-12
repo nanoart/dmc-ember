@@ -8,6 +8,11 @@ export default Ember.Route.extend({
 
   actions: {
 
+    addAttribute(param)
+    {
+      //add an new attribute into memory, does not actally save into database
+    },
+
     saveServiceProvider(newSP) {
       var assertionAttribute = this.store.createRecord('assertion-attribute', {
         name: 'lastLogin',
