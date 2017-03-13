@@ -8,12 +8,15 @@ export default Ember.Route.extend({
 
   actions: {
 
-    addAttribute(param)
+    addAttribute()
     {
       //add an new attribute into memory, does not actally save into database
     },
 
     saveServiceProvider(newSP) {
+
+      newSP.save().then(() => this.transitionTo('service-providers')); 
+      /*
       var assertionAttribute = this.store.createRecord('assertion-attribute', {
         name: 'lastLogin',
         mapTo: 'lastLogin',
@@ -31,7 +34,7 @@ export default Ember.Route.extend({
       });
 
 
-      /*
+
       Ember.RSVP.Promise.cast(newSP.get('assertionAttributes')).then(function(assertionAttributes) {
         assertionAttributes.pushOject(assertionAttribute);
 
