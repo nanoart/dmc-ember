@@ -43,6 +43,12 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 Specify what it takes to deploy your app.
 
+### knowledge learned
+model can be empty returned by Ember.A([]) instead of 
+//    return this.store.findAll('service-provider');
+
+content.id of row in light table is the record id returned from firebase.
+
 ## Further Reading / Useful Links
 
 * [ember.js](http://emberjs.com/)

@@ -29,5 +29,17 @@ export default Ember.Component.extend(TableCommon, {
       resizable: true,
       valuePath: 'ssoserver'
     }];
-  })
+  }),
+
+  actions: {
+        editSP() {
+//      go to edit rout
+        },
+        deleteSP() {
+          let rows = this.get('table.selectedRows');
+          alert(row[0].id);
+
+ //           this.get('table').removeRows(this.get('table.selectedRows'));
+        }    
+  }
 });

@@ -65,7 +65,7 @@ export default Ember.Component.extend({
         },
         deleteRows() {
             this.get('table').removeRows(this.get('table.selectedRows'));
-        },
+        }
 
     }
 });
