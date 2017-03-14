@@ -11,7 +11,7 @@ const {
 export default Ember.Mixin.create({
   store: inject.service(),
 
-  limitToLast: 0,
+  limitToLast: 4,
   orderBy: 'name',
 
   isLoading: computed.oneWay('fetchRecords.isRunning'),
@@ -40,7 +40,8 @@ export default Ember.Mixin.create({
   fetchRecords: task(function*() {
     let records = yield this.get('store').query('service-provider', this.getProperties(['limitToLast', 'orderBy']));
     this.get('model').pushObjects(records.toArray());
-    this.set('canLoadMore', !isEmpty(records));
+    this.set('canLoadMore', false);
+//    this.set('canLoadMore', !isEmpty(records));
   }).restartable(),
 
   actions: {
