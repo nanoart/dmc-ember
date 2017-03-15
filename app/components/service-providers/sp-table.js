@@ -33,14 +33,16 @@ export default Ember.Component.extend(TableCommon, {
 
   actions: {
         editSP() {
-//      go to edit rout
+//      go to edit route
+          let rows = this.get('table.selectedRows');
+          this.get('editSP')(rows[0].content.data.name);
         },
         deleteSP() {
           let rows = this.get('table.selectedRows');
 //          alert(rows[0].content.id);
+//we can do the deletion here,as the store is injected. this is simply for learning closure action on component
           this.get('deleteSP')(rows[0].content.id); //it can have promise
-
- //           this.get('table').removeRows(this.get('table.selectedRows'));
+          this.get('table').removeRows(this.get('table.selectedRows'));
         }    
   }
 });

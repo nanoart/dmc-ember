@@ -7,6 +7,9 @@ export default Ember.Route.extend({
 //    return this.store.findAll('service-provider');
   },
   actions: {
+    editSP(id) {
+      this.transitionTo('/service-providers/' + id + '/edit');
+    },
     deleteSP(id) {
       this.store.findRecord('service-provider', id).then((sp) => {
 //          this.store.deleteRecord(sp);
