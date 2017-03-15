@@ -51,8 +51,10 @@ content.id of row in light table is the record id returned from firebase.
 
 ## Further Reading / Useful Links
 
+* [Ember Closure Actions in Depth] (http://miguelcamba.com/blog/2016/01/24/ember-closure-actions-in-depth/)
+* [Sending Actions Up to the Data Owner] (https://emberigniter.com/send-closure-actions-up-data-owner/)
 * [ember.js](http://emberjs.com/)
 * [ember-cli](https://ember-cli.com/)
 * Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+* [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
+* [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)

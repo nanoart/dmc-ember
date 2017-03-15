@@ -37,7 +37,8 @@ export default Ember.Component.extend(TableCommon, {
         },
         deleteSP() {
           let rows = this.get('table.selectedRows');
-          alert(row[0].id);
+//          alert(rows[0].content.id);
+          this.get('deleteSP')(rows[0].content.id); //it can have promise
 
  //           this.get('table').removeRows(this.get('table.selectedRows'));
         }    
