@@ -2,7 +2,7 @@ import Ember from 'ember';
 import { storageFor } from 'ember-local-storage';
 
 export default Ember.Route.extend({
-  settings: storageFor('settings'),
+  serviceProviders: storageFor('service-providers'),
 
   model() {
     return this.store.createRecord('service-provider');
@@ -16,7 +16,9 @@ export default Ember.Route.extend({
     },
 
     saveServiceProvider(newSP) {
-      this.get('settings').get('serviceProviders').addObject(newSP);
+      let sps = this.get('serviceProviders');
+//      sps.reset();
+      sps.addObject(newSP);
       this.transitionTo('service-providers'); 
       /*
       newSP.save().then(() => this.transitionTo('service-providers'));

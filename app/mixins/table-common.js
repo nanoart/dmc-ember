@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import Table from 'ember-light-table';
-import { task } from 'ember-concurrency';
+
+import { storageFor } from 'ember-local-storage';
 
 const {
   inject,
@@ -10,6 +11,7 @@ const {
 
 export default Ember.Mixin.create({
   store: inject.service(),
+  serviceProviders: storageFor('service-providers'),
 
   limitToLast: 4,
   orderBy: 'name',
@@ -37,18 +39,21 @@ export default Ember.Mixin.create({
     this.set('table', table);
   },
 
-  fetchRecords: task(function*() {
-    let records = this.get('store').query('service-provider', {filter:{}});
-    this.get('model').pushObjects(records.toArray());
+  fetchRecords() {
+    let sps = this.get('serviceProviders'); //returned a class 
+    this.get('model').pushObjects(sps.toArray()); //need to convert pure array objects first
+
+//    let records = this.get('store').query('service-provider', {filter:{}});
+//    this.get('model').pushObjects(records.toArray());
     this.set('canLoadMore', false);
 //    this.set('canLoadMore', !isEmpty(records));
-  }).restartable(),
+  },
 
   actions: {
     onScrolledToBottom() {
       if (this.get('canLoadMore')) {
 //        this.incrementProperty('page');
-        this.get('fetchRecords').perform();
+        this.fetchRecords();
       }
     }      
   }
