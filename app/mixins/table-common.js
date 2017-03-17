@@ -38,7 +38,7 @@ export default Ember.Mixin.create({
   },
 
   fetchRecords: task(function*() {
-    let records = yield this.get('store').query('service-provider', {filter:{}});
+    let records = this.get('store').query('service-provider', {filter:{}});
     this.get('model').pushObjects(records.toArray());
     this.set('canLoadMore', false);
 //    this.set('canLoadMore', !isEmpty(records));

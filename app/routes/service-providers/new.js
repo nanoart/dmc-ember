@@ -16,10 +16,10 @@ export default Ember.Route.extend({
     },
 
     saveServiceProvider(newSP) {
-      this.get('settings').get('service-providers').addObject(newSP);
-
-      newSP.save().then(() => this.transitionTo('service-providers')); 
+      this.get('settings').get('serviceProviders').addObject(newSP);
+      this.transitionTo('service-providers'); 
       /*
+      newSP.save().then(() => this.transitionTo('service-providers'));
       var assertionAttribute = this.store.createRecord('assertion-attribute', {
         name: 'lastLogin',
         mapTo: 'lastLogin',
