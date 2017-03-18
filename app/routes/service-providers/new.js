@@ -19,6 +19,9 @@ export default Ember.Route.extend({
       let sps = this.get('serviceProviders');
 //      sps.reset();
       sps.addObject(newSP);
+
+      newSP.save();
+
       this.transitionTo('service-providers'); 
       /*
       newSP.save().then(() => this.transitionTo('service-providers'));
