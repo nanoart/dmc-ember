@@ -35,7 +35,7 @@ export default Ember.Component.extend(TableCommon, {
         editSP() {
 //      go to edit route
           let rows = this.get('table.selectedRows');
-          this.get('editSP')(rows[0].content.data.name);
+          this.get('editSP')(rows[0].content.id);
         },
         deleteSP() {
           let rows = this.get('table.selectedRows');

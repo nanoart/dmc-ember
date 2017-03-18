@@ -41,10 +41,12 @@ export default Ember.Mixin.create({
 
   fetchRecords() {
     let sps = this.get('serviceProviders'); //returned a class 
-    this.get('model').pushObjects(sps.toArray()); //need to convert pure array objects first
+//    this.get('model').pushObjects(sps.toArray()); //need to convert pure array objects first
 
+  var self = this;
     this.get('store').findAll('service-provider').then(function(splist)
     {
+      self.get('model').pushObjects(splist.toArray());
       this.set('limitToLast', 5);
 
     });
