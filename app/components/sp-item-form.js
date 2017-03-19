@@ -26,7 +26,7 @@ export default Ember.Component.extend({
         }];
     }),
     table: computed('columns', function() {
-        return new Table(this.get('columns'));
+        return new Table(this.get('columns'), this.item.get('assertionAttributes'));
     }),
     row: {},
     buttonLabel: 'Save',
