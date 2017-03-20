@@ -1,5 +1,5 @@
-<button class="btn btn-default" {{action 'editSP'}} >Edit SP</button>
-<button class="btn btn-default" {{action 'deleteSP'}} >Remove SP</button> 
+<button disabled={{isDisabled4Edit}} class="btn btn-default" {{action 'editSP'}} >Edit SP</button>
+<button disabled={{isDisabled4Delete}} class="btn btn-default" {{action 'deleteSP'}} >Remove SP</button> 
 
 {{#light-table table height='65vh' as |t|}}
 

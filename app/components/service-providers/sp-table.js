@@ -31,6 +31,12 @@ export default Ember.Component.extend(TableCommon, {
     }];
   }),
 
+  isDisabled4Edit: Ember.computed('table.selectedRows',function(){
+    return this.get('table.selectedRows') != 1;
+  }),
+
+  isDisabled4Delete: Ember.computed.empty('table.selectedRows'),
+
   actions: {
         editSP() {
 //      go to edit route
