@@ -28,10 +28,12 @@ export default Ember.Component.extend({
     table: computed('columns','attrsTableModel', function() {
         return new Table(this.get('columns'), this.get('attrsTableModel'),{enableSync: true});
     }),
-    row: {},
+    attrComposer: {},
     buttonLabel: 'Save',
     didReceiveAttrs() {
         this._super(...arguments);
+
+        this.get('attrsTableModel').clear();
         let records = this.item.get('assertionAttributes');
         this.get('attrsTableModel').pushObjects(records.toArray());
     },
@@ -55,6 +57,20 @@ export default Ember.Component.extend({
 
     }).drop(),
 
+    removeAssertionAttributes: task(function*(rows){
+        //forEach not work here?
+        for(let i = 0; i < rows.length;i++)
+        {
+            let aaItem = yield this.get('store').findRecord('assertion-attribute', rows[i].content.id);
+            this.item.get('assertionAttributes').removeObject(aaItem);
+            yield aaItem.destroyRecord();
+        }
+        yield this.item.save();   //item is SP
+
+        //update attribute table
+        this.get('table').removeRows(rows);
+
+    }).drop(),
 
     actions:{
         buttonClicked(param)
@@ -63,13 +79,13 @@ export default Ember.Component.extend({
             //bubble up
             this.sendAction('action',param);    //why here is not an actual actionName?
         },
-        addAttribute(row) {
+        addAttribute(attrComposer) {
             //
             var assertionAttribute = this.get('store').createRecord('assertion-attribute', {
-                name: row.name,
-                mapTo: row.mapTo,
-                mapType: row.mapType,
-                location:row.location,
+                name: attrComposer.name,
+                mapTo: attrComposer.mapTo,
+                mapType: attrComposer.mapType,
+                location:attrComposer.location,
                 checkRequest:true
             });
             this.item.get('assertionAttributes').addObject(assertionAttribute);
@@ -87,7 +103,24 @@ export default Ember.Component.extend({
 //            this.sendAction('addAttribute', param);
         },
         deleteRows() {
-            this.get('table').removeRows(this.get('table.selectedRows'));
+            this.get('removeAssertionAttributes').perform(this.get('table.selectedRows'));
+
+           
+
+/*
+            var deletions = this.get('table.selectedRows').map((row) => {
+                this.get('store').findRecord('assertion-attribute', row.content.id).then((aaItem) => {
+                    this.item.get('assertionAttributes').removeObject(aaItem);
+                    return aaItem.destroyRecord();                
+                });
+
+            });
+
+            Ember.RSVP.all(deletions).then(() => {
+                this.item.save(); //why this is called before deletions is formed? I guess two layers embedded
+            });
+
+*/            
         }
 
     }
