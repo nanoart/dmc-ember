@@ -6,7 +6,7 @@ const { computed } = Ember;
 
 export default Ember.Component.extend({
     store: Ember.inject.service(),
-    attrName: 'Mingfa',
+    attrsTableModel: [],
     //store: Ember.inject.service(), we can access the store in the computed this way
     //this is for attribute list
     columns: computed(function() {
@@ -25,11 +25,16 @@ export default Ember.Component.extend({
         width: '150px'
         }];
     }),
-    table: computed('columns', function() {
-        return new Table(this.get('columns'), this.item.get('assertionAttributes'));
+    table: computed('columns','attrsTableModel', function() {
+        return new Table(this.get('columns'), this.get('attrsTableModel'),{enableSync: true});
     }),
     row: {},
     buttonLabel: 'Save',
+    didReceiveAttrs() {
+        this._super(...arguments);
+        let records = this.item.get('assertionAttributes');
+        this.get('attrsTableModel').pushObjects(records.toArray());
+    },
 
     saveATTRS: task(function*(newSP){
         var store = this.get('store');
@@ -59,8 +64,26 @@ export default Ember.Component.extend({
             this.sendAction('action',param);    //why here is not an actual actionName?
         },
         addAttribute(row) {
-            var clonedObj = Ember.copy(row, true);
-            this.get('table').addRow(clonedObj);
+            //
+            var assertionAttribute = this.get('store').createRecord('assertion-attribute', {
+                name: row.name,
+                mapTo: row.mapTo,
+                mapType: row.mapType,
+                location:row.location,
+                checkRequest:true
+            });
+            this.item.get('assertionAttributes').addObject(assertionAttribute);
+            let self = this;
+            assertionAttribute.save().then(function() {
+
+                self.get('attrsTableModel').clear();
+                let records = self.item.get('assertionAttributes');
+                self.get('attrsTableModel').pushObjects(records.toArray());
+
+            });
+
+//            var clonedObj = Ember.copy(row, true);
+//            this.get('table').addRow(clonedObj);
 //            this.sendAction('addAttribute', param);
         },
         deleteRows() {
