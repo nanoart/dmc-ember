@@ -45,7 +45,6 @@
     "ember-route-action-helper": "2.0.2",
     "ember-source": "^2.11.0",
     "ember-transition-helper": "0.0.6",
-    "ember-welcome-page": "^2.0.2",
     "emberfire": "2.0.6",
     "loader.js": "^4.0.10"
   },

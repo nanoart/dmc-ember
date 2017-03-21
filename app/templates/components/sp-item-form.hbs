@@ -1,13 +1,12 @@
 {{yield}}
 
-<div class="form-horizontal">
-    <div class="form-group">
+
 <!--            
             <button type="submit" class="btn btn-default" {{action 'buttonClicked' item}}>{{buttonLabel}}</button>
 -->
-{{#paper-button raised=true onClick=(action 'buttonClicked' item)}}{{paper-icon "done"}} {{buttonLabel}}{{/paper-button}}            
+    {{#paper-button raised=true onClick=(action 'buttonClicked' item)}}{{paper-icon "done"}} {{buttonLabel}}{{/paper-button}}            
 
-    </div>
+
     {{#paper-form as |form|}}
     <div class="layout-column flex-50">
         {{form.input label="Name" value=item.name  onChange=null required=true}}
@@ -16,17 +15,22 @@
     </div>
     {{/paper-form}}
 
-    <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-file">
-                    </span>Attributes</a>
-<button type="submit" class="btn btn-default" {{action 'addAttribute' attrComposer}} >Add Attribute</button>
-<button type="submit" class="btn btn-default" {{action 'deleteRows'}} >Remove Attribute</button>                    
-                </h4>
-            </div>
-            <div id="collapseOne" class="panel-collapse collapse in">
+
+  {{#paper-card}}
+    {{#paper-toolbar}}
+      {{#paper-toolbar-tools}}
+        <h2>Assertion Attributes</h2>
+
+        <span class="flex"></span>
+{{#paper-button  onClick=(action 'addAttribute' attrComposer) }}Add Attribute{{/paper-button}}
+{{#paper-button  onClick=(action 'deleteRows') }}Remove Attribute{{/paper-button}}          
+        {{#paper-button onClick=(action "toggleSourceCodeFull") iconButton=true}}
+          {{paper-icon icon="code"}}
+        {{/paper-button}}
+      {{/paper-toolbar-tools}}
+    {{/paper-toolbar}}
+    {{#paper-content}}
+      <div class="doc-code-example {{if showSourceCodeFull 'is-visible'}}">
                 {{#paper-form as |form|}}
                 <div class="layout-column flex-50">
                     {{form.input label="Name" value=attrComposer.name  onChange=null required=true}}
@@ -36,9 +40,7 @@
                     {{#paper-checkbox value=isAdmin onChange=(action (mut isAdmin))}}Return Response{{/paper-checkbox}}
                 </div>
                 {{/paper-form}}
-            </div>
-        </div>
-
+      </div>
 
         {{#light-table table as |t|}}
 
@@ -70,15 +72,8 @@
 
         {{/light-table}}
 
+    {{/paper-content}}
+
+  {{/paper-card}}
 
 
-    </div>
-
-  <!--
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default" {{action 'saveServiceProvider' model}}>Add</button>
-    </div>
-  </div>
--->  
-</div>
