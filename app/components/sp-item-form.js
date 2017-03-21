@@ -30,6 +30,7 @@ export default Ember.Component.extend({
     }),
     attrComposer: {},
     buttonLabel: 'Save',
+    showSourceCodeFull: false,
     didReceiveAttrs() {
         this._super(...arguments);
 
@@ -73,6 +74,9 @@ export default Ember.Component.extend({
     }).drop(),
 
     actions:{
+        toggleSourceCodeFull() {
+        this.toggleProperty('showSourceCodeFull');
+        },        
         buttonClicked(param)
         {
             this.get('saveATTRS').perform(param);
