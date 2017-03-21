@@ -1,3 +1,9 @@
+// Define desired color palettes.
+$primary: "teal";
+$accent: "light-green";
+$warn: "pink";
+
+@import 'ember-paper';
 @import "bootstrap";
 @import "main.scss";
 @import "table.scss";

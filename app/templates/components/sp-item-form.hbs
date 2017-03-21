@@ -2,28 +2,19 @@
 
 <div class="form-horizontal">
     <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
+<!--            
             <button type="submit" class="btn btn-default" {{action 'buttonClicked' item}}>{{buttonLabel}}</button>
-        </div>
-    </div>    
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Name</label>
-    <div class="col-sm-10">
-      {{input type="text" value=item.name class="form-control" placeholder="The SP name"}}
+-->
+{{#paper-button raised=true onClick=(action 'buttonClicked' item)}}{{paper-icon "done"}} {{buttonLabel}}{{/paper-button}}            
+
     </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Description</label>
-    <div class="col-sm-10">
-      {{input type="text" value=item.description class="form-control" placeholder="The description of the service provider"}}
+    {{#paper-form as |form|}}
+    <div class="layout-column flex-50">
+        {{form.input label="Name" value=item.name  onChange=null required=true}}
+        {{form.input label="Description" value=item.description onChange=null}}
+        {{form.input label="Type e.g. SAML WS-FED" value=item.type onChange=null required=true}}                
     </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Type</label>
-    <div class="col-sm-10">
-      {{input type="text" value=item.type class="form-control" placeholder="The SP type, e.g. SAML WS-FED"}}
-    </div>
-  </div>
+    {{/paper-form}}
 
     <div class="panel-group" id="accordion">
         <div class="panel panel-default">
@@ -36,31 +27,15 @@
                 </h4>
             </div>
             <div id="collapseOne" class="panel-collapse collapse in">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                {{input type="text" value=attrComposer.name  size="50" placeholder="Attribute Name"}}
-                            </div>
-                            <div class="form-group">
-                                {{input type="text" value=attrComposer.mapTo placeholder="Map To"}}
-                            </div>                            
-                            <div class="form-group">
-                                {{input type="text" value=attrComposer.mapType placeholder="Map Types"}}
-                            </div>                            
-                            <div class="form-group">
-                                {{input type="text" value=attrComposer.location placeholder="Location"}}
-                            </div>                            
-                            <div class="form-group">
-                                {{input type="checkbox" name="isAdmin" checked=isAdmin}}
-                                
-                            </div>                            
-                            <div class="form-group">
-                                <textarea class="form-control" placeholder="Content" rows="5" required></textarea>
-                            </div>
-                        </div>
-                    </div>
+                {{#paper-form as |form|}}
+                <div class="layout-column flex-50">
+                    {{form.input label="Name" value=attrComposer.name  onChange=null required=true}}
+                    {{form.input label="Map To" value=attrComposer.mapTo onChange=null}}
+                    {{form.input label="Map Type" value=attrComposer.mapType onChange=null required=true}}                
+                    {{form.input label="Location" value=attrComposer.location onChange=null required=true}}
+                    {{#paper-checkbox value=isAdmin onChange=(action (mut isAdmin))}}Return Response{{/paper-checkbox}}
                 </div>
+                {{/paper-form}}
             </div>
         </div>
 
