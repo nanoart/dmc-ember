@@ -1,6 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  renderTemplate: function() {
+        this.render({
+            // Render the UsersView into the outlet found in application.hbs
+            into: 'application'
+        });
+    },
 
   model() {
     return this.store.createRecord('service-provider');
