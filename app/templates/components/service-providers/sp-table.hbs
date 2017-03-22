@@ -2,11 +2,24 @@
 <button disabled={{isDisabled4Edit}} class="btn btn-default" {{action 'editSP'}} >Edit SP</button>
 <button disabled={{isDisabled4Delete}} class="btn btn-default" {{action 'deleteSP'}} >Remove SP</button> 
 -->
+{{#paper-toolbar accent=true}}
+  {{#paper-toolbar-tools}}
+    <h3>Service Providers</h3>
+    <span class="flex"></span>
+    {{#paper-button raised=true onClick=(action 'addSP') }}{{paper-icon "add box"}}Add{{/paper-button}}
+    {{#paper-button raised=true disabled=isDisabled4Edit onClick=(action 'editSP')}}{{paper-icon "mode edit"}} Edit SP{{/paper-button}}
+    {{#paper-button raised=true disabled=isDisabled4Delete onClick=(action 'deleteSP')}}{{paper-icon "delete forever"}} Remove SP{{/paper-button}}
+    
+  {{/paper-toolbar-tools}}
+{{/paper-toolbar}}
+
+
+<!-- 
 <div class="layout-row">
 {{#paper-button raised=true disabled=isDisabled4Edit onClick=(action 'editSP')}}{{paper-icon "mode edit"}} Edit SP{{/paper-button}}
 {{#paper-button raised=true disabled=isDisabled4Delete onClick=(action 'deleteSP')}}{{paper-icon "delete forever"}} Remove SP{{/paper-button}}
 </div>
-
+-->
 {{#light-table table height='65vh' as |t|}}
 
   {{t.head

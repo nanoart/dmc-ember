@@ -10,20 +10,20 @@ export default Ember.Component.extend(TableCommon, {
     return [{
       label: 'Name',
       valuePath: 'name',
-      width: '60px',
+      width: '25%',
       sortable: false,
       resizable: true,
       draggable: true
     }, {
       label: 'Description',
       valuePath: 'description',
-      width: '150px',
+      width: '25%',
       resizable: true,
     }, {
       label: 'Type',
       valuePath: 'type',
       resizable: true,
-      width: '150px'
+      width: '25%'
     }, {
       label: 'SSO Server',
       resizable: true,
@@ -38,6 +38,9 @@ export default Ember.Component.extend(TableCommon, {
   isDisabled4Delete: Ember.computed.empty('table.selectedRows'),
 
   actions: {
+        addSP() {
+
+        },
         editSP() {
 //      go to edit route
           let rows = this.get('table.selectedRows');

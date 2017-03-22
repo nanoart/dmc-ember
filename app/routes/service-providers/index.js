@@ -7,6 +7,9 @@ export default Ember.Route.extend({
 //    return this.store.findAll('service-provider');
   },
   actions: {
+    addSP() {
+        this.transitionTo('service-providers.new');
+    },
     editSP(id) {
       this.transitionTo('/service-providers/' + id + '/edit');
     },

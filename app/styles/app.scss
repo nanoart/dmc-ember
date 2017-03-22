@@ -1,6 +1,6 @@
 // Define desired color palettes.
 $primary: "teal";
-$accent: "light-green";
+$accent: "light-blue";
 $warn: "pink";
 
 @import 'ember-paper';
@@ -29,7 +29,13 @@ $warn: "pink";
   }
 }
 
+.working-area {
+    background-color: color($primary, '200');
+}
 
+.side-menu {
+    background-color: color($primary, '300');
+}
 
 .stepwizard-step p {
     margin-top: 10px;

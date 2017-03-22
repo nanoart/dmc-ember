@@ -1,3 +1,11 @@
-<h2>View/Edit</h2>
+
+{{#paper-toolbar accent=true}}
+  {{#paper-toolbar-tools}}
+    <h3>Service Provider</h3>
+    <span class="flex"></span>
+    {{#paper-button raised=true onClick=(action 'saveEdit' model)}}{{paper-icon "save"}}Save{{/paper-button}}
+    {{#paper-button raised=true onClick=(action 'cancelEdit')}}{{paper-icon "cancel"}} Cancel{{/paper-button}} 
+  {{/paper-toolbar-tools}}
+{{/paper-toolbar}}
 
 {{sp-item-form item=model action='editSP'}}

@@ -1,31 +1,28 @@
 {{yield}}
 
-
 <!--            
-            <button type="submit" class="btn btn-default" {{action 'buttonClicked' item}}>{{buttonLabel}}</button>
+    <button type="submit" class="btn btn-default" {{action 'buttonClicked' item}}>{{buttonLabel}}</button>
+    {{#paper-button raised=true onClick=(action 'buttonClicked' item)}}{{paper-icon "save"}} {{buttonLabel}}{{/paper-button}}            
 -->
-    {{#paper-button raised=true onClick=(action 'buttonClicked' item)}}{{paper-icon "done"}} {{buttonLabel}}{{/paper-button}}            
-
 
     {{#paper-form as |form|}}
     <div class="layout-column flex-50">
-        {{form.input label="Name" value=item.name  onChange=null required=true}}
-        {{form.input label="Description" value=item.description onChange=null}}
-        {{form.input label="Type e.g. SAML WS-FED" value=item.type onChange=null required=true}}                
+        {{form.input label="Name" value=item.name  onChange=(action (mut item.name)) required=true}}
+        {{form.input label="Description" value=item.description onChange=(action (mut item.description))}}
+        {{form.input label="Type e.g. SAML WS-FED" value=item.type onChange=(action (mut item.type)) required=true}}                
     </div>
     {{/paper-form}}
 
-
   {{#paper-card}}
-    {{#paper-toolbar}}
+    {{#paper-toolbar accent=true}}
       {{#paper-toolbar-tools}}
         <h2>Assertion Attributes</h2>
 
         <span class="flex"></span>
-        {{#paper-button  onClick=(action 'addAttribute' attrComposer) }}Add Attribute{{/paper-button}}
-        {{#paper-button  onClick=(action 'deleteRows') }}Remove Attribute{{/paper-button}}          
+        {{#paper-button disabled=aaNotEditable  onClick=(action 'addAttribute' attrComposer) }}{{paper-icon "playlist add"}}Add Attribute{{/paper-button}}
+        {{#paper-button  onClick=(action 'deleteRows') }}{{paper-icon "delete"}}Remove Attribute{{/paper-button}}          
         {{#paper-button onClick=(action "toggleSourceCodeFull") iconButton=true}}
-          {{paper-icon icon="code"}}
+          {{paper-icon icon="keyboard arrow down"}}
         {{/paper-button}}
       {{/paper-toolbar-tools}}
     {{/paper-toolbar}}

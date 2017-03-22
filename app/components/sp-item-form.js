@@ -13,24 +13,28 @@ export default Ember.Component.extend({
         return [{
         label: 'Name',
         valuePath: 'name',
-        width: '60px',
+        width: '30%',
         sortable: false
         }, {
         label: 'Map To',
         valuePath: 'mapTo',
-        width: '150px'
+        width: '30%'
         }, {
         label: 'Location',
         valuePath: 'location',
-        width: '150px'
+        width: '30%'
         }];
     }),
     table: computed('columns','attrsTableModel', function() {
         return new Table(this.get('columns'), this.get('attrsTableModel'),{enableSync: true});
     }),
+
     attrComposer: {},
     buttonLabel: 'Save',
     showSourceCodeFull: false,
+    aaNotEditable: computed('showSourceCodeFull',function(){
+        return !this.get('showSourceCodeFull');
+    } ),    
     didReceiveAttrs() {
         this._super(...arguments);
 
