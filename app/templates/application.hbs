@@ -20,10 +20,10 @@
       {{#paper-list class="side-menu"}}
         {{#menu-item onClick=(transition-to "index")}}Introduction{{/menu-item}}
 
-        {{#menu-item  onClick=(transition-to "service-providers")}}Service Providers{{/menu-item}}        
-        {{#menu-item  onClick=(transition-to "application-wizard")}}Application Wizard{{/menu-item}}
-        {{#menu-item  onClick=(transition-to "users")}} Users{{/menu-item}}
-        {{#menu-item  onClick=(transition-to "tokens")}}Tokens{{/menu-item}}
+        {{#menu-item  active=(is-active "service-providers.index" currentRouteName) onClick=(transition-to "service-providers")}}Service Providers{{/menu-item}}        
+        {{#menu-item  active=(is-active "application-wizard.index" currentRouteName) onClick=(transition-to "application-wizard")}}Application Wizard{{/menu-item}}
+        {{#menu-item  active=(is-active "users" currentRouteName) onClick=(transition-to "users")}} Users{{/menu-item}}
+        {{#menu-item  active=(is-active "tokens" currentRouteName) onClick=(transition-to "tokens")}}Tokens{{/menu-item}}
 
 <!--
         {{#menu-item onClick=(action "toggleExpandedItem" "demos") expanded=demosExpanded canExpand=true}}Components{{/menu-item}}

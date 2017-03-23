@@ -9,6 +9,46 @@ $warn: "pink";
 @import "table.scss";
 
 //@import "style-responsive.scss";
+.menu-item {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+
+    .expand-icon {
+      position: relative;
+      right: -36px;
+      transition: transform 250ms linear;
+    }
+
+    &.expanded .expand-icon {
+      transform: rotate(-180deg);
+    }
+  }
+
+  .submenu-item {
+    .md-list-item-inner {
+      padding-left: 36px;
+    }
+  }
+
+  .menu-item, .submenu-item {
+    min-height: 40px;
+
+    &.active, &:hover {
+      background-color: rgba(#fff, .1);
+    }
+
+    .md-list-item-inner {
+      min-height: 40px;
+
+      md-icon {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+
 .doc-code-example {
   /* Initially we don't want any height, and we want the contents to be hidden */
   max-height: 0;
