@@ -1,3 +1,19 @@
+<div id="rootwizard1" class="form-wizard form-wizard-horizontal">
+	<form class="form floating-label">
+		<div class="form-wizard-nav">
+			<div class="progress" style="width:{{percentWidth}}">
+				<div class="progress-bar progress-bar-primary" style="width:{{percent}}"></div>
+			</div>
+			<ul class="nav nav-justified">
+				<li class="active"><a href="#tab1" data-toggle="tab"><span class="step">1</span> <span class="title">Scenario</span></a></li>
+				<li><a href="#tab2" data-toggle="tab"><span class="step">2</span> <span class="title">Logon Procedure</span></a></li>
+				<li><a href="#tab3" data-toggle="tab"><span class="step">3</span> <span class="title">Users</span></a></li>
+				<li><a href="#tab4" data-toggle="tab"><span class="step">4</span> <span class="title">CONFIRM</span></a></li>
+			</ul>
+		</div><!--end .form-wizard-nav -->
+	</form>
+</div>
+
 <div class="stepwizard">
 	<div class="stepwizard-row setup-panel">
 		<div class="stepwizard-step">
@@ -14,6 +30,8 @@
 		</div>
 	</div>
 </div>
+
+
 
 
 {{#paper-content}}
@@ -51,6 +69,7 @@
 <h3>Summary</h3>
 {{/paper-content}}
 <div class="layout-row">
-<button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+
+{{#paper-button onClick=(action "nextStep")}}Next{{/paper-button}}
 {{#paper-button disabled=true}}Finish!{{/paper-button}}
 </div>
