@@ -6,10 +6,17 @@ export default Ember.Controller.extend({
   scenario: '---',
   index: 0,
   total: 4,
+  isStep1: Ember.computed('index',function(){
+      return this.get('index') === 0;
+  }),
   percentWidth: Ember.computed('total',function(){
       return 100 - (100 / this.get('total')) + '%';
   }),
   percent: '0%',
+  isCurrent(step){
+    return this.get('index') === step;
+  },
+
   actions: {
     selectScenario(newscenario) { 
     	this.set('scenario', newscenario);

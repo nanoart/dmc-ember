@@ -34,7 +34,7 @@
 
 
 
-{{#paper-content}}
+<div class="{{if (eq index 0) 'active'}}">
 	<h3> Scenario</h3>
 	<!--
 	{{#power-select selected=scenario options=scenarios onchange=(action "selectScenario") as |scenarioname|}}
@@ -52,9 +52,9 @@
 		<label class="control-label">Last Name</label>
 		<input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Last Name" />
 	</div>
-{{/paper-content}}
+</div>
 
-{{#paper-content}}
+<div class="{{if (eq index 1) 'active'}}">
 	<div class="form-group">
 		<label class="control-label">Company Name</label>
 		<input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
@@ -63,11 +63,11 @@
 		<label class="control-label">Company Address</label>
 		<input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address"  />
 	</div>
-{{/paper-content}}	
+</div>	
 
-{{#paper-content}}
+<div class="{{if (eq index 2) 'active'}}">
 <h3>Summary</h3>
-{{/paper-content}}
+</div>
 <div class="layout-row">
 
 {{#paper-button onClick=(action "nextStep")}}Next{{/paper-button}}
