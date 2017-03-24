@@ -21,6 +21,11 @@ export default Ember.Controller.extend({
     selectScenario(newscenario) { 
     	this.set('scenario', newscenario);
     },
+    backStep(){
+        this.decrementProperty('index');
+        let current = this.get('index');
+        this.set('percent', current / (this.get('total') - 1) * 100+'%');
+    },    
     nextStep(){
         this.incrementProperty('index');
         let current = this.get('index');

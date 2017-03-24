@@ -5,15 +5,15 @@
 				<div class="progress-bar progress-bar-primary" style="width:{{percent}}"></div>
 			</div>
 			<ul class="nav nav-justified">
-				<li class="active"><a href="#tab1" data-toggle="tab"><span class="step">1</span> <span class="title">Scenario</span></a></li>
-				<li><a href="#tab2" data-toggle="tab"><span class="step">2</span> <span class="title">Logon Procedure</span></a></li>
-				<li><a href="#tab3" data-toggle="tab"><span class="step">3</span> <span class="title">Users</span></a></li>
-				<li><a href="#tab4" data-toggle="tab"><span class="step">4</span> <span class="title">CONFIRM</span></a></li>
+				<li class="{{if (eq index 0) 'active' 'done'}}"><a href="#tab1" data-toggle="tab"><span class="step">1</span> <span class="title">Scenario</span></a></li>
+				<li class="{{if (eq index 1) 'active'}} {{if (gt index 1) 'done'}}"><a href="#tab2" data-toggle="tab"><span class="step">2</span> <span class="title">Logon Procedure</span></a></li>
+				<li class="{{if (eq index 2) 'active'}} {{if (gt index 2) 'done'}}"><a href="#tab3" data-toggle="tab"><span class="step">3</span> <span class="title">Users</span></a></li>
+				<li class="{{if (eq index 3) 'active'}}"><a href="#tab4" data-toggle="tab"><span class="step">4</span> <span class="title">CONFIRM</span></a></li>
 			</ul>
 		</div><!--end .form-wizard-nav -->
 	</form>
 </div>
-
+<!--
 <div class="stepwizard">
 	<div class="stepwizard-row setup-panel">
 		<div class="stepwizard-step">
@@ -30,46 +30,55 @@
 		</div>
 	</div>
 </div>
-
-
-
-
-<div class="{{if (eq index 0) 'active'}}">
-	<h3> Scenario</h3>
-	<!--
-	{{#power-select selected=scenario options=scenarios onchange=(action "selectScenario") as |scenarioname|}}
-		{{scenarioname}}
-	{{/power-select}}
 -->
-	{{#paper-select label="Scenarios" options=scenarios selected=scenario 	onChange=(action (mut scenario))
-	as |scenarioname|}}
-		{{scenarioname}}
-	{{/paper-select}}
-
-	{{paper-input flex=30 label="Name" value=name onChange=(action (mut name))}}
-
-	<div class="form-group">
-		<label class="control-label">Last Name</label>
-		<input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Last Name" />
-	</div>
-</div>
-
-<div class="{{if (eq index 1) 'active'}}">
-	<div class="form-group">
-		<label class="control-label">Company Name</label>
-		<input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
-	</div>
-	<div class="form-group">
-		<label class="control-label">Company Address</label>
-		<input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address"  />
-	</div>
-</div>	
-
-<div class="{{if (eq index 2) 'active'}}">
-<h3>Summary</h3>
-</div>
 <div class="layout-row">
+	<div class="layout-column flex-80 layout-align-center-center">
+<div class="tab-content clearfix">
+	<div class="tab-pane {{if (eq index 0) 'active'}}">
+		<h3> Scenario</h3>
+		<!--
+		{{#power-select selected=scenario options=scenarios onchange=(action "selectScenario") as |scenarioname|}}
+			{{scenarioname}}
+		{{/power-select}}
+	-->
+		{{#paper-select label="Scenarios" options=scenarios selected=scenario 	onChange=(action (mut scenario))
+		as |scenarioname|}}
+			{{scenarioname}}
+		{{/paper-select}}
 
-{{#paper-button onClick=(action "nextStep")}}Next{{/paper-button}}
-{{#paper-button disabled=true}}Finish!{{/paper-button}}
+		{{paper-input flex=30 label="Name" value=name onChange=(action (mut name))}}
+
+	</div>
+
+	<div class="tab-pane {{if (eq index 1) 'active'}}">
+		<div class="form-group">
+			<label class="control-label">Company Name</label>
+			<input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
+		</div>
+		<div class="form-group">
+			<label class="control-label">Company Address</label>
+			<input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address"  />
+		</div>
+	</div>	
+	<div class="tab-pane {{if (eq index 2) 'active'}}">
+		<h3>Users</h3>
+	</div>
+	<div class="tab-pane {{if (eq index 3) 'active'}}">
+		<h3>Summary</h3>
+	</div>
 </div>
+	</div>
+</div>
+{{#paper-toolbar accent=true}}
+  {{#paper-toolbar-tools}}
+	{{#paper-button disabled=(eq index 0) onClick=(action "backStep")}}{{paper-icon 'keyboard arrow left'}}Back{{/paper-button}}
+
+    <span class="flex"></span>
+{{#paper-button disabled=(eq index 3) onClick=(action "nextStep")}}Next{{paper-icon 'keyboard arrow right'}}{{/paper-button}}
+{{#paper-button disabled=(not-eq index 3)}}Finish {{paper-icon 'done'}}{{/paper-button}}
+  
+  {{/paper-toolbar-tools}}
+{{/paper-toolbar}}
+
+
+

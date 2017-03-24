@@ -1,6 +1,7 @@
 // Define desired color palettes.
 $primary: "teal";
 $accent: "light-blue";
+
 $warn: "pink";
 
 $white: #ffffff;
@@ -9,6 +10,21 @@ $white: #ffffff;
 @import "bootstrap";
 //@import "main.scss";
 @import "table.scss";
+
+// Tabbable tabs
+// -------------------------
+
+// Hide tabbable panes to start, show them when `.active`
+.tab-content {
+  > .tab-pane {
+    display: none;
+    visibility: hidden;
+  }
+  > .active {
+    display: block;
+    visibility: visible;
+  }
+}
 
 //@import "style-responsive.scss";
 .form-wizard.form-wizard-horizontal {
@@ -39,12 +55,12 @@ $white: #ffffff;
 		li.active,
 		li:hover {
 			a {
-				color: blue;
+				color: inherit;
 				background-color: transparent;
 			}
 			.step {
 				transition: border-color 0.40s linear;
-				border-color: blue;
+				border-color: $brand-primary;
 			}
 			.title {
 				color: $text-color;
@@ -53,8 +69,8 @@ $white: #ffffff;
 		li.done {
 			.step {
 				color: $white;
-				border-color: blue;
-				background-color: blue;
+				border-color: $brand-primary;
+				background-color:$brand-primary;
 				font-weight: 14;
 				transition: background-color 0.20s linear;
 			}
