@@ -4,12 +4,52 @@ $accent: "light-blue";
 
 $warn: "pink";
 
-$white: #ffffff;
+$white: #fff;
+$black:							#0c0c0c;
+$color-threshold:				72%;
+
+$brand-primary:				    #0aa89e;
+
+$gray-lightest:					hsl(hue($brand-primary), 3%, 95%);
+$gray:							hsl(hue($brand-primary), 3%, 33.5%);
+
+$gutter-size:					4px;
+$menubar-gap:					($gutter-size * 3);
+$weight-medium:					500;
+$weight-normal:					400;
+
+$menubar-bg:					$gray-lightest;
+$menubar-font-size: 12px;
+$menubar-color:					fade($black, 85%);
+$menubar-icon-width:			40px;
+$menubar-width-collapsed:		$menubar-icon-width + ($menubar-gap * 2);
+
+
+$menubar-link-hover:			fade($black, 7%);
+$menubar-link-active:			$white;
+$menubar-link-hover-color:		$black;
+$menubar-link-active-color:		$brand-primary;
+$menubar-folder-color:			fade($menubar-color, 75%);
+$menubar-icon-color:			$gray;
+$menubar-icon-bg-hover:			fade($black, 7%);
+$menubar-icon-color-hover:		$white;
+$menubar-icon-bg-active:		$white;
+$menubar-icon-color-active:		$brand-primary;
+
+$menubar-tree-border-color:		fade(contrast($menubar-bg, $black, $white, $color-threshold), 30%);
+$menubar-tree-width:			21px;
+$menubar-tree-indent:			57px;
+$menubar-tree-indent-level1:	30px;
+$menubar-tree-indent-level2:	$menubar-tree-indent-level1 + $menubar-tree-width;
+$menubar-tree-indent-level3:	$menubar-tree-indent-level2 + $menubar-tree-width;
+$menubar-tree-indent-level4:	$menubar-tree-indent-level3 + $menubar-tree-width;
+$menubar-tree-indent-level5:	$menubar-tree-indent-level4 + $menubar-tree-width;
 
 @import 'ember-paper';
 @import "bootstrap";
 //@import "main.scss";
 @import "table.scss";
+@import "gui-controls.scss";
 
 // Tabbable tabs
 // -------------------------
