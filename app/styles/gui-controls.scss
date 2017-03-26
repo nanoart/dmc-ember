@@ -312,7 +312,7 @@
 		top: 7px;
 		display: inline-block;
 		margin-left: -12px;
-		color: fade($menubar-color, 50%);
+		color: rgba($menubar-color, 50%);
 		font-size: 12px;
 		font-weight: inherit;
 		opacity: 0;
@@ -339,7 +339,7 @@
 			margin-left: 2px;
 		}
 		&.expanding > a:after, &.expanded > a:after {
-			color: fade($menubar-color, 40%);
+			color: rgba($menubar-color, 40%);
 			margin-left: 0;
 			@include rotate(-45deg);
 		}
@@ -457,3 +457,63 @@
 }
 
 
+// Responsive classes
+// --------------------------------------------------
+
+// Medium Devices
+// -------------------------
+/*
+@media (min-width: 1200px) {
+  .menubar-pin .gui-controls > li:not(.gui-folder) > a:hover {
+    background-color: rgba(12, 12, 12, 0.07);
+  }
+  .menubar-pin .gui-controls > li.active:not(.gui-folder) > a {
+    background-color: #ffffff;
+    -webkit-transition: background 0.3s linear;
+    -o-transition: background 0.3s linear;
+    transition: background 0.3s linear;
+  }
+  .menubar-pin .menubar-inverse .gui-controls > li:not(.gui-folder) > a:hover {
+    background-color: #313942;
+  }
+  .menubar-pin .menubar-inverse .gui-controls > li.active:not(.gui-folder) > a {
+    background-color: #20252b;
+  }
+  .menubar-pin .gui-controls li .title {
+    left: 0;
+    opacity: 1;
+  }
+  .menubar-pin .gui-folder > a:after {
+    opacity: 1;
+  }
+  .menubar-pin .gui-folder:hover:not(.active) .gui-icon {
+    background-color: rgba(12, 12, 12, 0.07);
+    color: #333531;
+  }
+  .menubar-pin .gui-controls > li:not(.gui-folder) .gui-icon:hover {
+    background: inherit;
+  }
+  .menubar-pin .gui-icon:hover {
+    background: inherit;
+  }
+  .menubar-pin .menubar-inverse .gui-folder:hover:not(.active) .gui-icon {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+  }
+  .menubar-pin .menubar-inverse .gui-controls > li:not(.gui-folder) .gui-icon:hover {
+    background: inherit;
+  }
+  .menubar-pin .menubar-inverse .gui-icon:hover {
+    background: inherit;
+  }
+}
+*/
+
+@media (min-width: $screen-lg-min) { 
+	.menubar-pin {
+		@include expanded-menu-item-markup();
+		@include expanded-menu-title();
+		@include expanded-menu-sign();
+		@include expanded-menu-icon();
+	}
+}
