@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
       return this.get('index') === 0;
   }),
   percentWidth: Ember.computed('total',function(){
-      return Ember.String.htmlSafe('width: '+ 100 - (100 / this.get('total')) + '%');
+      return Ember.String.htmlSafe('width: '+ (100 - (100 / this.get('total'))) + '%');
   }),
   percent: Ember.computed('index','total',function(){
     let current = this.get('index');

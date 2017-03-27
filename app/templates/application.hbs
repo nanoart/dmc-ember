@@ -1,9 +1,9 @@
   {{#paper-toolbar}}
     {{#paper-toolbar-tools}}
-      {{#paper-button iconButton=true}}
-        {{paper-icon "home"}}
-      {{/paper-button}}
-      <h2>DualShield</h2>
+      <h2>DualShield          </h2>
+            {{#paper-button iconButton=true}}
+              {{paper-icon "view list"}}
+            {{/paper-button}}
       <span class="flex"></span>
 
         {{#power-select options=locales selected=defCountry onchange=(action "changeLocale") as |locale|}}
