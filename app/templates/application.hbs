@@ -5,8 +5,14 @@
       {{/paper-button}}
       <h2>DualShield</h2>
       <span class="flex"></span>
+
+        {{#power-select options=locales selected=defCountry onchange=(action "changeLocale") as |locale|}}
+        {{locale}}
+        {{/power-select}}
+
+
       {{#paper-button iconButton=true}}{{paper-icon "warning"}}{{/paper-button}}       
-      {{#paper-button iconButton=true}}{{paper-icon "message"}}{{/paper-button}}      
+      {{#paper-button iconButton=true}}{{t 'header.about'}}{{paper-icon "message"}}{{/paper-button}}      
       {{#paper-button iconButton=true}}{{paper-icon "notifications"}}{{/paper-button}}
       {{#paper-button}}{{paper-icon "person"}}Logout{{/paper-button}}
     {{/paper-toolbar-tools}}
@@ -102,9 +108,9 @@
 
 
 
-        {{#menu-item onClick=(transition-to "index")}}Introduction{{/menu-item}}
+        {{#menu-item onClick=(transition-to "index")}}{{t 'menubar.introduction'}}{{/menu-item}}
 
-        {{#menu-item  active=(is-active "service-providers.index" currentRouteName) onClick=(transition-to "service-providers")}}Service Providers{{/menu-item}}        
+        {{#menu-item  active=(is-active "service-providers.index" currentRouteName) onClick=(transition-to "service-providers")}}{{t 'menubar.sps'}}{{/menu-item}}        
         {{#menu-item  active=(is-active "application-wizard.index" currentRouteName) onClick=(transition-to "application-wizard")}}Application Wizard{{/menu-item}}
         {{#menu-item  active=(is-active "users" currentRouteName) onClick=(transition-to "users")}} Users{{/menu-item}}
         {{#menu-item  active=(is-active "tokens" currentRouteName) onClick=(transition-to "tokens")}}Tokens{{/menu-item}}

@@ -1,0 +1,11 @@
+menubar:
+  introduction: '介绍'
+  sps:  '服务供应商'
+header:
+  about: '简介'
+  how: '工作机理'
+product:
+  info: '{product} will cost {price, number, USD} if ordered by {deadline, date, time}'
+  title: 'Hello world!'
+  html:
+    info: '<strong>{product}</strong> will cost <em>{price, number, USD}</em> if ordered by {deadline, date, time}'
