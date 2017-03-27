@@ -10,9 +10,12 @@ export default Ember.Controller.extend({
       return this.get('index') === 0;
   }),
   percentWidth: Ember.computed('total',function(){
-      return 100 - (100 / this.get('total')) + '%';
+      return Ember.String.htmlSafe('width: '+ 100 - (100 / this.get('total')) + '%');
   }),
-  percent: '0%',
+  percent: Ember.computed('index','total',function(){
+    let current = this.get('index');
+    return Ember.String.htmlSafe('width: '+ current / (this.get('total') - 1) * 100+'%');     
+  }),
   isCurrent(step){
     return this.get('index') === step;
   },
@@ -23,13 +26,9 @@ export default Ember.Controller.extend({
     },
     backStep(){
         this.decrementProperty('index');
-        let current = this.get('index');
-        this.set('percent', current / (this.get('total') - 1) * 100+'%');
     },    
     nextStep(){
         this.incrementProperty('index');
-        let current = this.get('index');
-        this.set('percent', current / (this.get('total') - 1) * 100+'%');
     }
   }
 
