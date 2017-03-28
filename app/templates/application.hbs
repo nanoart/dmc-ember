@@ -1,7 +1,7 @@
   {{#paper-toolbar}}
     {{#paper-toolbar-tools}}
-      <h2>DualShield          </h2>
-            {{#paper-button iconButton=true}}
+      <h2>DualShield</h2><span class="flex-5"></span>
+            {{#paper-button iconButton=true onClick=(action "togglePinMode")}}
               {{paper-icon "view list"}}
             {{/paper-button}}
       <span class="flex"></span>
@@ -12,7 +12,7 @@
 
 
       {{#paper-button iconButton=true}}{{paper-icon "warning"}}{{/paper-button}}       
-      {{#paper-button iconButton=true}}{{t 'header.about'}}{{paper-icon "message"}}{{/paper-button}}      
+      {{#paper-button}}{{paper-icon "message"}}{{t 'header.about'}}{{/paper-button}}      
       {{#paper-button iconButton=true}}{{paper-icon "notifications"}}{{/paper-button}}
       {{#paper-button}}{{paper-icon "person"}}Logout{{/paper-button}}
     {{/paper-toolbar-tools}}
@@ -24,7 +24,7 @@
     {{#paper-content}}
 
 			<!-- BEGIN MENUBAR-->
-			<div id="menubar" class="menubar-pin menubar-inverse ">
+			<div id="menubar" class="{{if pinMode 'menubar-pin'}}  menubar-inverse ">
 <div class="menubar-scroll-panel">
     <!-- BEGIN MAIN MENU -->
 <ul id="main-menu" class="gui-controls">
@@ -54,20 +54,26 @@
 	</li><!--end /menu-li -->
 	<!-- END EMAIL -->
 
-	<!-- BEGIN DASHBOARD -->
+	<!-- 
 	<li>
-		<a href="../../html/layouts/builder.html" >
+		<a href="/service-providers" >
 			<div class="gui-icon"><i class="md md-web"></i></div>
-			<span class="title">Layouts</span>
+			<span class="title">{{t 'menubar.sps'}}</span>
 		</a>
-	</li><!--end /menu-li -->
-	<!-- END DASHBOARD -->
+	</li>
+ -->
+ 	<li>
+	{{#link-to 'service-providers.index'}}
+			<div class="gui-icon">{{paper-icon 'web'}}</div>
+			<span class="title">{{t 'menubar.sps'}}</span>
+	{{/link-to}}
+	</li>
 
 	<!-- BEGIN UI -->
-	<li class="gui-folder expanded">
-		<a>
+	<li class="gui-folder {{if advanced 'expanded'}}">
+		<a {{action 'clickMenuItem' 'advanced'}}>
 			<div class="gui-icon"><i class="fa fa-puzzle-piece fa-fw"></i></div>
-			<span class="title">UI elements</span>
+			<span class="title">Advanced</span>
 		</a>
 		<!--start submenu -->
 		<ul>

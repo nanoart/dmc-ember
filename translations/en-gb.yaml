@@ -1,6 +1,9 @@
 menubar:
   introduction: 'Introduction'
   sps:  'Service Providers'
+header:
+  about: 'About'
+  how: 'How it works'  
 product:
   info: '{product} will cost {price, number, USD} if ordered by {deadline, date, time}'
   title: 'Hello world!'

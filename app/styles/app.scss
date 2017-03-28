@@ -55,6 +55,9 @@ $menubar-tree-indent-level3:	$menubar-tree-indent-level2 + $menubar-tree-width;
 $menubar-tree-indent-level4:	$menubar-tree-indent-level3 + $menubar-tree-width;
 $menubar-tree-indent-level5:	$menubar-tree-indent-level4 + $menubar-tree-width;
 
+
+$ember-power-select-background-color: $primary;
+@import 'ember-power-select';
 @import 'ember-paper';
 @import "bootstrap";
 //@import "main.scss";
