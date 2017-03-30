@@ -13,7 +13,7 @@ $brand-primary:				    #0aa89e;
 // Large screen / wide desktop
 //** Deprecated `@screen-lg` as of v3.0.1
 $screen-lg:                  1200px;
-$screen-lg-min:              800px;
+$screen-lg-min:              $screen-lg;
 //** Deprecated `@screen-lg-desktop` as of v3.0.1
 $screen-lg-desktop:          $screen-lg-min;
 
@@ -25,28 +25,33 @@ $menubar-gap:					($gutter-size * 3);
 $weight-medium:					500;
 $weight-normal:					400;
 
+// Brand colors
+// -------------------------
+$brand-inverse:					#20252b;
+
+// Menubar
 $menubar-bg:					$gray-lightest;
 $menubar-font-size: 12px;
-$menubar-color:					rgba($black, 85%);
+$menubar-color:					rgba($black, 0.85);
 $menubar-icon-width:			40px;
 $menubar-width-collapsed:		$menubar-icon-width + ($menubar-gap * 2);
+$menubar-width:					240px;
 
-
-$menubar-link-hover:			rgba($black, 7%);
+$menubar-link-hover:			rgba($black, 0.07);
 $menubar-link-active:			$white;
 $menubar-link-hover-color:		$black;
 $menubar-link-active-color:		$brand-primary;
-$menubar-folder-color:			rgba($menubar-color, 75%);
+$menubar-folder-color:			rgba($menubar-color, 0.75);
 $menubar-icon-color:			$gray;
-$menubar-icon-bg-hover:			rgba($black, 7%);
+$menubar-icon-bg-hover:			rgba($black, 0.07);
 $menubar-icon-color-hover:		$white;
 $menubar-icon-bg-active:		$white;
 $menubar-icon-color-active:		$brand-primary;
+$menubar-collapse-speed:		.5s;
+$menubar-collapse-ease:			cubic-bezier(.15,.99,.18,1.01);//ease-out;
 
-
-
-//$menubar-tree-border-color:		rgba(contrast-color($menubar-bg, $black, $white), 30%);
-$menubar-tree-border-color:		rgba($black, 30%);
+//$menubar-tree-border-color:		rgba(contrast-color($menubar-bg, $black, $white), 0.30);
+$menubar-tree-border-color:		rgba($white, 0.30);
 $menubar-tree-width:			21px;
 $menubar-tree-indent:			57px;
 $menubar-tree-indent-level1:	30px;
@@ -56,13 +61,69 @@ $menubar-tree-indent-level4:	$menubar-tree-indent-level3 + $menubar-tree-width;
 $menubar-tree-indent-level5:	$menubar-tree-indent-level4 + $menubar-tree-width;
 
 
+// Menubar inverse
+// -------------------------
+$menubar-inverse-bg:					lighten($brand-inverse, 5%);
+$menubar-inverse-color:					rgba($white, 0.55);
+$menubar-inverse-folder-color:			rgba($white, 0.50);
+$menubar-inverse-link-active:			$brand-inverse;
+$menubar-inverse-link-hover:			lighten($brand-inverse, 8%);
+$menubar-inverse-link-hover-color:		$white;
+$menubar-inverse-link-active:			$brand-inverse;
+$menubar-inverse-link-active-color:		$white;
+
+$menubar-inverse-icon-bg-active:		$brand-primary;
+$menubar-inverse-icon-bg-hover:			rgba($white, 0.12);
+$menubar-inverse-icon-color:			rgba($white, 0.65);
+$menubar-inverse-icon-color-active:		$white;
+$menubar-inverse-icon-color-hover:		$white;
+$menubar-inverse-tree-border-color:		rgba($white, 0.30);
+
 $ember-power-select-background-color: $primary;
+
+// Headerbar
+// -------------------------
+$headerbar-height:				64px;
+
+// Z-index
+$zindex-menubar:				1004;
+$zindex-menubar-first:			1006;
+$zindex-menubar-mobile:			1013;
+$zindex-offcanvas-backdrop:		1031;
+
+// Extra small screen / phone
+//** Deprecated `@screen-xs` as of v3.0.1
+$screen-xs:                  480px;
+//** Deprecated `@screen-xs-min` as of v3.2.0
+$screen-xs-min:              $screen-xs;
+//** Deprecated `@screen-phone` as of v3.0.1
+$screen-phone:               $screen-xs-min;
+
+// Small screen / tablet
+//** Deprecated `@screen-sm` as of v3.0.1
+$screen-sm:                  768px;
+$screen-sm-min:              $screen-sm;
+//** Deprecated `@screen-tablet` as of v3.0.1
+$screen-tablet:              $screen-sm-min;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max:              ($screen-sm-min - 1);
+
+
+// Shadow heights
+// -------------------------
+
+$z-height-0: none;
+$z-height-1: 0 1px 3px 0 rgba(0,0,0,.33);
+
+@import 'layout';
+@import 'menubar';
 @import 'ember-power-select';
 @import 'ember-paper';
 @import "bootstrap";
-//@import "main.scss";
 @import "table.scss";
 @import "gui-controls.scss";
+@import 'gui-controls-inverse';
 
 // Tabbable tabs
 // -------------------------

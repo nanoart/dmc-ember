@@ -312,7 +312,7 @@
 		top: 7px;
 		display: inline-block;
 		margin-left: -12px;
-		color: rgba($menubar-color, 50%);
+		color: rgba($menubar-color, 0.50);
 		font-size: 12px;
 		font-weight: inherit;
 		opacity: 0;
@@ -339,7 +339,7 @@
 			margin-left: 2px;
 		}
 		&.expanding > a:after, &.expanded > a:after {
-			color: rgba($menubar-color, 40%);
+			color: rgba($menubar-color, 0.40);
 			margin-left: 0;
 			@include rotate(-45deg);
 		}
