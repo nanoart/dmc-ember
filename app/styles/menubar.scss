@@ -103,14 +103,15 @@
 
 // Menubar withoit a fixed header
 // --------------------------------------------------
-
+// we need to remove this one, as the class is not set on body in Ember project
+/*
 body:not(.header-fixed),
 .menubar-first {
 	#menubar {
 		top: 0;
 	}
 }
-
+*/
 
 // Fixed panel
 // --------------------------------------------------
