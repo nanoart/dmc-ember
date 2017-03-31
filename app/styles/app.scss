@@ -10,6 +10,8 @@ $color-threshold:				72%;
 
 $brand-primary:				    #0aa89e;
 
+$gray-lighter:					hsl(hue($brand-primary), 3%, 90%);
+
 // Large screen / wide desktop
 //** Deprecated `@screen-lg` as of v3.0.1
 $screen-lg:                  1200px;
@@ -27,7 +29,13 @@ $weight-normal:					400;
 
 // Brand colors
 // -------------------------
+$brand-default:				    $gray-lighter;
 $brand-inverse:					#20252b;
+
+// Body
+// -------------------------
+$body-background:				$brand-default;
+$body-background-size:			100% 100%;
 
 // Menubar
 $menubar-bg:					$gray-lightest;
@@ -38,7 +46,7 @@ $menubar-width-collapsed:		$menubar-icon-width + ($menubar-gap * 2);
 $menubar-width:					240px;
 
 $menubar-link-hover:			rgba($black, 0.07);
-$menubar-link-active:			$white;
+$menubar-link-active:			$gray;
 $menubar-link-hover-color:		$black;
 $menubar-link-active-color:		$brand-primary;
 $menubar-folder-color:			rgba($menubar-color, 0.75);
@@ -124,6 +132,17 @@ $z-height-1: 0 1px 3px 0 rgba(0,0,0,.33);
 @import "table.scss";
 @import "gui-controls.scss";
 @import 'gui-controls-inverse';
+
+// Body styles
+// -------------------------
+
+body {
+	background: $body-background;
+	background-size: $body-background-size;
+//	color: $body-color;
+	
+	-ms-overflow-style: scrollbar;
+}
 
 // Tabbable tabs
 // -------------------------

@@ -20,5 +20,14 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
+  //css import is special, it merges into the css under dist/assets
+  app.import('vendor/fa/css/font-awesome.min.css');
+  //fonts, will keep the folder, dist/fa/....
+  //here, I don't want to change  fa css at all, let specify the dest
+  app.import('vendor/fa/fonts/fontawesome-webfont.woff2',{destDir:'fonts'});
+  app.import('vendor/fa/fonts/fontawesome-webfont.woff',{destDir:'fonts'});  
+  app.import('vendor/fa/fonts/fontawesome-webfont.ttf',{destDir:'fonts'});
+  app.import('vendor/fa/fonts/fontawesome-webfont.svg',{destDir:'fonts'});
+
   return app.toTree();
 };
