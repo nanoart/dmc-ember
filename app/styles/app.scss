@@ -92,9 +92,12 @@ $ember-power-select-background-color: $primary;
 // Headerbar
 // -------------------------
 $headerbar-height:				64px;
+$headerbar-bg:					$white;
+$headerbar-color:				rgba($white, 0.60);
 
 // Z-index
 $zindex-menubar:				1004;
+$zindex-header:					1005;
 $zindex-menubar-first:			1006;
 $zindex-menubar-mobile:			1013;
 $zindex-offcanvas-backdrop:		1031;
@@ -143,6 +146,25 @@ body {
 	
 	-ms-overflow-style: scrollbar;
 }
+
+#header {
+	position: absolute;
+	left: 0; right: 0;
+	height: $headerbar-height;
+	z-index: $zindex-header;
+	background: $headerbar-bg;
+	color: $headerbar-color;
+//	.box-shadow(@z-height-1);
+
+	.header-fixed & {
+		position: fixed;
+	}
+
+	.no-sidebar & {
+		right: $menubar-gap;
+	}
+}
+
 
 // Tabbable tabs
 // -------------------------

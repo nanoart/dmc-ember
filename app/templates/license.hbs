@@ -1,0 +1,25 @@
+{{#paper-card}}
+    {{#paper-toolbar accent=true}}
+        {{#paper-toolbar-tools}}
+        <h2>Existing Licenses</h2>
+        {{/paper-toolbar-tools}}
+    {{/paper-toolbar}}
+    {{paper-divider}}
+    <!-- Can we use paper-list here? -->
+    {{#paper-content}}
+{{#paper-radio-group
+  groupValue=(readonly selectedFruit)
+  onChange=(action (mut selectedFruit)) as |group|}}
+  {{#group.radio value="Apple" primary=true}} Apple {{/group.radio}}
+  {{#group.radio value="Banana" warn=true}} Banana {{/group.radio}}
+  {{#group.radio value="Mango"}} Mango {{/group.radio}}
+{{/paper-radio-group}}
+
+  {{paper-input textarea=true block=true label="Biography" maxlength=500 passThru=(hash rows=15 maxRows=15)
+    value=biography onChange=(action (mut biography))}}
+
+
+    {{/paper-content}}
+
+{{/paper-card}}
+
