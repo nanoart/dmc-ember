@@ -22,6 +22,7 @@ Router.map(function() {
     });
   this.route('dashboard');
   this.route('license');
+  this.route('gateways');
 });
 
 export default Router;

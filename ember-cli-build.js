@@ -29,5 +29,9 @@ module.exports = function(defaults) {
   app.import('vendor/fa/fonts/fontawesome-webfont.ttf',{destDir:'fonts'});
   app.import('vendor/fa/fonts/fontawesome-webfont.svg',{destDir:'fonts'});
 
+
+//  app.import('vendor/simplebar/simplebar.css');
+//  app.import('vendor/simplebar/simplebar.js');
+
   return app.toTree();
 };

@@ -1,0 +1,58 @@
+{{#paper-card}}
+    {{#paper-toolbar accent=true}}
+        {{#paper-toolbar-tools}}
+        <h2>Existing Gateways</h2><span class="flex"></span>
+            {{#paper-button onClick=(action "toggleSourceCodeFull") iconButton=true}}
+            {{#if expanded}}
+                {{paper-icon icon="cancel"}}
+            {{else}}
+                {{paper-icon icon="add circle"}}
+            {{/if}}
+
+            {{/paper-button}}
+        {{/paper-toolbar-tools}}
+    {{/paper-toolbar}}
+    {{paper-divider}}
+    <!-- Can we use paper-list here? -->
+
+    {{#paper-content}}
+          <div class="doc-code-example {{if expanded 'is-visible'}}">
+        {{#paper-form onSubmit=(action "submitLicense") as |form|}}
+            <div class="layout-row">
+                {{paper-input required=true label="Name" value=name onChange=(action (mut name))}}
+                {{#paper-checkbox value=value1 onChange=(action (mut value1))}}Enable{{/paper-checkbox}}
+            </div>
+            <div class="layout-row">
+                {{paper-input label="Description" value=description onChange=(action (mut description))}}
+            </div>
+            <h3>Domains</h3>
+            {{paper-chips content=domainNames readOnly=readOnly removeItem=(action "removeItem")
+                addItem=(action "addItem") placeholder="Add a domain"}}
+
+            <div class="layout-row">
+            {{#paper-select label="Type" options=scenarios selected=scenario 	onChange=(action (mut scenario))
+                as |scenarioname|}} {{scenarioname}}
+                {{/paper-select}}
+            </div>
+
+
+            <div class="layout-row">
+                {{paper-input required=true flex=50 label="Address/IP" value=ipAddress onChange=(action (mut ipAddress))}}
+                {{paper-input required=true flex=20 label="Port" value=port onChange=(action (mut port))}}
+            </div>
+
+            <div class="layout-row">
+                {{#paper-checkbox value=tls onChange=(action (mut tls))}}TLS{{/paper-checkbox}}
+                {{#paper-checkbox value=needAuth onChange=(action (mut needAuth))}}Require Authentication{{/paper-checkbox}}
+            </div>
+
+            <div class="layout-row">
+                {{#form.submit-button raised=true primary=true}}Submit{{/form.submit-button}}
+            </div>
+        {{/paper-form}}
+
+          </div>
+    {{/paper-content}}
+
+{{/paper-card}}
+

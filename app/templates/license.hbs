@@ -1,24 +1,46 @@
 {{#paper-card}}
     {{#paper-toolbar accent=true}}
         {{#paper-toolbar-tools}}
-        <h2>Existing Licenses</h2>
+        <h2>Existing Licenses</h2><span class="flex"></span>
+            {{#paper-button onClick=(action "toggleSourceCodeFull") iconButton=true}}
+            {{#if expanded}}
+                {{paper-icon icon="cancel"}}
+            {{else}}
+                {{paper-icon icon="add circle"}}
+            {{/if}}
+
+            {{/paper-button}}
         {{/paper-toolbar-tools}}
     {{/paper-toolbar}}
     {{paper-divider}}
     <!-- Can we use paper-list here? -->
+
     {{#paper-content}}
-{{#paper-radio-group
-  groupValue=(readonly selectedFruit)
-  onChange=(action (mut selectedFruit)) as |group|}}
-  {{#group.radio value="Apple" primary=true}} Apple {{/group.radio}}
-  {{#group.radio value="Banana" warn=true}} Banana {{/group.radio}}
-  {{#group.radio value="Mango"}} Mango {{/group.radio}}
-{{/paper-radio-group}}
+          <div class="doc-code-example {{if expanded 'is-visible'}}">
+        {{#if noInternet}}
+        {{#paper-card}}
+            <div>{{paper-icon "warning" warn=true size=48}}
+                It sounds like your DualShield machine does not have Internet connection.Please access our license server
+                on a computer which has Internet with the following URL
+                <p><a href="https://license.deepnetsecurity.com" target="_blank">https://license.deepnetsecurity.com</a></p>
+                Once the license key is submitted, the license server will generate the corrensponding license data and 
+                send it to the registered account email.
+                <p>Please copy &amp; paste the license data here and submit to redeem it.</p>
+            </div>
+            {{/paper-card}}
+        {{/if}}
 
-  {{paper-input textarea=true block=true label="Biography" maxlength=500 passThru=(hash rows=15 maxRows=15)
-    value=biography onChange=(action (mut biography))}}
+        {{#paper-form onSubmit=(action "submitLicense") as |form|}}
+        <div class="layout-row">
+            {{paper-input textarea=true block=true label="License Key or License Data" maxlength=1000 passThru=(hash rows=10 cols=150 maxRows=15)
+                value=biography onChange=(action (mut biography))}}
+            </div>
+        <div class="layout-row">
+            {{#form.submit-button raised=true primary=true}}Submit{{/form.submit-button}}
+        </div>
+        {{/paper-form}}
 
-
+          </div>
     {{/paper-content}}
 
 {{/paper-card}}

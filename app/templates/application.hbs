@@ -14,9 +14,11 @@
 		<div id="content">
 			{{outlet}}
 		</div>
+
 		<!-- BEGIN MENUBAR-->
 		<div id="menubar" class="{{if pinMode 'menubar-pin'}}  menubar-inverse">
 			<div class="menubar-scroll-panel">
+
 				<!-- BEGIN MAIN MENU -->
 				<ul id="main-menu" class="gui-controls">
 
@@ -70,7 +72,10 @@
 
 							<li><a href="../../html/ui/typography.html"><span class="title">Roles</span></a></li>
 							<li><a href="../../html/ui/cards.html"><span class="title">Policies</span></a></li>
-							<li><a href="../../html/ui/buttons.html"><span class="title">Gateways</span></a></li>
+
+							<li>{{#link-to 'gateways'}}<span class="title">Gateways</span>{{/link-to}}</li>
+
+
 							<li><a href="../../html/ui/lists.html"><span class="title">networks</span></a></li>
 							<li><a href="../../html/ui/tabs.html"><span class="title">Templates</span></a></li>
 							<li><a href="../../html/ui/accordions.html"><span class="title">Syslog</span></a></li>
@@ -156,8 +161,8 @@
 
 					<!-- END UI -->
 				</ul>
-				<!--end .main-menu -->
 				<!-- END MAIN MENU -->
+
 				<div class="menubar-foot-panel">
 					<small class="no-linebreak hidden-folded">
 				<span class="opacity-75">Copyright &copy; 2017</span> <strong>Deepnet Security</strong>
