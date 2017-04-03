@@ -147,6 +147,10 @@ body {
 	-ms-overflow-style: scrollbar;
 }
 
+#main-menu {
+  overflow: auto;
+  height: 100%;
+}
 #header {
 	position: absolute;
 	left: 0; right: 0;

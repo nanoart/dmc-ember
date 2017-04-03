@@ -59,8 +59,8 @@
 						<span class="title">Tokens</span> {{/link-to}}
 					</li>
 
-					<li class="gui-folder {{if advanced 'expanded'}}">
-						<a {{action 'clickMenuItem' 'advanced'}}>
+					<li class="gui-folder {{if configured 'expanded'}}">
+						<a {{action 'clickMenuItem' 'configured'}}>
 							<div class="gui-icon"><i class="fa fa-cogs" aria-hidden="true"></i></div>
 							<span class="title">Configuration</span>
 						</a>
@@ -95,8 +95,8 @@
 
 
 
-					<li class="gui-folder {{if advanced 'expanded'}}">
-						<a {{action 'clickMenuItem' 'advanced'}}>
+					<li class="gui-folder {{if monitored 'expanded'}}">
+						<a {{action 'clickMenuItem' 'monitored'}}>
 							<div class="gui-icon"><i class="fa fa-binoculars" aria-hidden="true"></i></div>
 							<span class="title">Monitor</span>
 						</a>

@@ -6,6 +6,8 @@ export default Ember.Controller.extend({
         defCountry: locales[0],
         pinMode: true,
         advanced: false,
+        configured: false,
+        monitored: false,
         actions: {
                 changeLocale(localeName)  {
                         this.get('intl').setLocale(localeName);
