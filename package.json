@@ -56,6 +56,6 @@
   },
   "private": true,
   "dependencies": {
-    "simplebar": "^2.2.1"
+
   }
 }

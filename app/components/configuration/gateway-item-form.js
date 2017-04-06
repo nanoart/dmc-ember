@@ -9,16 +9,10 @@ export default Ember.Component.extend({
         sms:{}
     },
     actions:{
-        submitGateway()
+        submitGateway(item)
         {
-            var assertionAttribute = this.get('store').createRecord('gateway', {
-                name: attrComposer.name,
-                mapTo: attrComposer.mapTo,
-                mapType: attrComposer.mapType,
-                location:attrComposer.location,
-                config:JSON.stringify(config)
-            });
-
+            this.item.config = JSON.stringify(this.get('config'));
+            this.item.save().then(() => this.transitionToRoute('gateways'));
         },
         removeDomain()
         {
