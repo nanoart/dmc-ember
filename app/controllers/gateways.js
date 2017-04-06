@@ -8,11 +8,12 @@ export default Ember.Controller.extend({
         removeItem(){
 
         },
-        addItem(){
+        addItem(gm, cm){    //cm = configuration model, it can be on of email, sms, telephone etc
+            gm.save().then(() => cm.save());
 
         },
         toggleSourceCodeFull() {
-        this.toggleProperty('expanded');
+            this.toggleProperty('expanded');
         },        
         submitLicense(){
             this.toggleProperty('noInternet');

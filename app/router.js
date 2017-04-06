@@ -22,7 +22,10 @@ Router.map(function() {
     });
   this.route('dashboard');
   this.route('license');
-  this.route('gateways');
+  this.route('gateways', function(){
+    this.route('new');
+    this.route('edit', {path:'/:gw_id/edit'});
+  });
 });
 
 export default Router;
