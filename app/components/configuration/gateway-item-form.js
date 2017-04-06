@@ -12,7 +12,9 @@ export default Ember.Component.extend({
         submitGateway(item)
         {
             this.item.config = JSON.stringify(this.get('config'));
-            this.item.save().then(() => this.transitionToRoute('gateways'));
+            this.item.save().then(() => this.sendAction('action'));
+            //the action value is actually defined on its parent's new.hbs
+
         },
         removeDomain()
         {
