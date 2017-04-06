@@ -18,13 +18,13 @@
 
     {{#if (eq scenario 'Email')}}
     <div class="layout-row">
-        {{paper-input required=true flex=50 label="Address/IP" value=ipAddress onChange=(action (mut ipAddress))}}
-        {{paper-input required=true flex=20 label="Port" value=port onChange=(action (mut port))}}
+        {{paper-input required=true flex=50 label="Address/IP" value=config.email.ipAddress onChange=(action (mut config.email.ipAddress))}}
+        {{paper-input required=true flex=20 label="Port" value=config.email.port onChange=(action (mut config.email.port))}}
     </div>
 
     <div class="layout-row">
-        {{#paper-checkbox value=tls onChange=(action (mut tls))}}TLS{{/paper-checkbox}}
-        {{#paper-checkbox value=needAuth onChange=(action (mut needAuth))}}Require Authentication{{/paper-checkbox}}
+        {{#paper-checkbox value=config.email.tls onChange=(action (mut config.email.tls))}}TLS{{/paper-checkbox}}
+        {{#paper-checkbox value=config.email.needAuth onChange=(action (mut config.email.needAuth))}}Require Authentication{{/paper-checkbox}}
     </div>
 
     <div class="layout-row">

@@ -12,6 +12,11 @@ export default Ember.Controller.extend({
             gm.save().then(() => cm.save());
 
         },
+        addGateway()
+        {
+            this.transitionToRoute('gateways.new');
+            
+        },
         toggleSourceCodeFull() {
             this.toggleProperty('expanded');
         },        
