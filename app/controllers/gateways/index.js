@@ -7,20 +7,20 @@ export default Ember.Controller.extend({
         return [{
             label: 'Name',
             valuePath: 'name',
-            width: '30%',
+            width: '20%',
             sortable: false
         }, {
             label: 'Domains',
             valuePath: 'domains',
-            width: '30%'
+            width: '50%'
          }, {
             label: 'Type',
             valuePath: 'type',
-            width: '30%'
+            width: '20%'
         }, {        
             label: 'Enabled',
             valuePath: 'enabled',
-            width: '30%'
+            width: '10%'
         }];
     }),
     table: Ember.computed('columns', function() {
@@ -40,15 +40,19 @@ export default Ember.Controller.extend({
         },
         editGateway()
         {
-            this.transitionToRoute('gateways.new');            
+            let rows = this.get('table.selectedRows');
+            this.transitionToRoute('/gateways/' + rows[0].content.id + '/edit');
         },
         deleteGateway()
         {
           let rows = this.get('table.selectedRows');
-//          alert(rows[0].content.id);
-//we can do the deletion here,as the store is injected. this is simply for learning closure action on component
-//          this.get('deleteSP')(rows[0].content.id); //it can have promise
-          this.get('table').removeRows(rows);            
+          rows.forEach(function(row) {
+                this.store.findRecord('gateway', row.content.id).then(gw => {
+                    gw.destroyRecord();
+                });
+
+          }, this);
+         
         },                
         toggleSourceCodeFull() {
             this.toggleProperty('expanded');

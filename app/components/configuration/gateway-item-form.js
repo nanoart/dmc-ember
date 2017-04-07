@@ -8,6 +8,17 @@ export default Ember.Component.extend({
         email:{},
         sms:{}
     },
+
+    init() {
+        this._super(...arguments);
+
+        if(this.item.get('config'))
+        {
+            this.set('config', JSON.parse(this.item.get('config')));
+        }
+
+    },
+
     actions:{
         submitGateway(item)
         {
