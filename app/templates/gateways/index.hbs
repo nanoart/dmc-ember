@@ -17,8 +17,25 @@
     {{/paper-toolbar}}
     {{paper-divider}}
     <!-- Can we use paper-list here? here we only list gateways by using something like table -->
-
-
-
 {{/paper-card}}
 
+{{#light-table table height='65vh' as |t|}}
+
+  {{t.head
+    iconAscending='fa fa-sort-asc'
+    iconDescending='fa fa-sort-desc'
+    fixed=true
+  }}
+
+  {{#t.body
+    multiSelect=true
+    as |body|
+  }}
+    {{#if isLoading}}
+      {{#body.loader}}
+        {{table-loader}}
+      {{/body.loader}}
+    {{/if}}
+  {{/t.body}}
+
+{{/light-table}}
