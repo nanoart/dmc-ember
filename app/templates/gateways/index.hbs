@@ -4,7 +4,13 @@
         <h2>Existing Gateways</h2><span class="flex"></span>
             {{#paper-button onClick=(action "addGateway")}}
                 {{paper-icon icon="add box"}}Add
-            {{/paper-button}}        
+            {{/paper-button}}
+            {{#paper-button disabled=isDisabled4Edit onClick=(action "editGateway")}}
+                {{paper-icon icon="edit"}}Edit
+            {{/paper-button}}
+            {{#paper-button disabled=isDisabled4Delete onClick=(action "deleteGateway")}}
+                {{paper-icon icon="delete"}}Delete
+            {{/paper-button}}                                 
             {{#paper-button onClick=(action "toggleSourceCodeFull") iconButton=true}}
             {{#if expanded}}
                 {{paper-icon icon="cancel"}}
